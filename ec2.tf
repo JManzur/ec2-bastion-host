@@ -17,9 +17,10 @@ resource "aws_instance" "bastion-host" {
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.bastion_host.id]
 
-  # fail2band
+  # Install fail2band
   user_data = <<EOF
   #!/bin/bash
+  yum update -y
   amazon-linux-extras install epel -y
   yum-config-manager --enable epel
   yum install fail2ban -y
