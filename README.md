@@ -90,6 +90,7 @@ sudo ssh -J -i Bastion-Key.pem ec2-user@11.222.333.444 -i Second-Key.pem ec2-use
 - **Solution:** Make a dynamic ssh port forwarding connection to the bastion host, then you configure a proxy socket in firefox and that way you can access the web application using his private IP.
 
 **How-To:**
+
 Make a SSH conection as follows:
 
 ```bash
@@ -117,6 +118,7 @@ Configure the proxy as follows (Change 4815 to the SOCKS port that you specified
 - **Solution:** Make a ssh local port port forwarding connection to the bastion host, specifying the private IP and RDP port of the Windows instance, plus the local port you want to use for the socket.
 
 **How-To:**
+
 Make a SSH conection as follows:
 
 ```bash
