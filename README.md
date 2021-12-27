@@ -12,8 +12,8 @@ This terraform manifest deploy an EC2 instance on a public subnet of your choice
 
 ## Resources deployed by this manifest:
 
-- Linux EC2 with [fail2band](https://www.fail2ban.org/wiki/index.php/Main_Page) installed
-- Security Group
+- Linux EC2.
+- Security Group.
 
 ## Tested with: 
 
@@ -134,6 +134,7 @@ sudo ssh -i Bastion-Key.pem -L 4815:192.168.1.123:3389 ec2-user@11.222.333.444
 Open your RDP client and make the connection as follows:
 
 ![App Screenshot](images/ssh_local01.png)
+
 ## Author:
 
 - [@jmanzur](https://jmanzur.com.ar)

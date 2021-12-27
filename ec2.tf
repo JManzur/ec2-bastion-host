@@ -16,18 +16,6 @@ resource "aws_instance" "bastion-host" {
   subnet_id              = var.public-subnet-id
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.bastion_host.id]
-
-  # Install fail2band
-  user_data = <<EOF
-  #!/bin/bash
-  yum update -y
-  amazon-linux-extras install epel -y
-  yum-config-manager --enable epel
-  yum install fail2ban -y
-  systemctl enable fail2ban
-  systemctl start fail2ban
-  EOF
-
   tags = merge(var.project-tags, { Name = "${var.resource-name-tag}-EC2" }, )
 
   root_block_device {
