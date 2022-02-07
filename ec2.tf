@@ -11,12 +11,13 @@ data "aws_ami" "linux2" {
 
 # EC2 Deploy
 resource "aws_instance" "bastion-host" {
-  ami                    = data.aws_ami.linux2.id
-  instance_type          = var.instance_type["type1"]
-  subnet_id              = var.public-subnet-id
-  key_name               = var.key_name
-  vpc_security_group_ids = [aws_security_group.bastion_host.id]
-  tags = merge(var.project-tags, { Name = "${var.resource-name-tag}-EC2" }, )
+  ami                         = data.aws_ami.linux2.id
+  instance_type               = var.instance_type["type1"]
+  subnet_id                   = var.public-subnet-id
+  key_name                    = var.key_name
+  vpc_security_group_ids      = [aws_security_group.bastion_host.id]
+  associate_public_ip_address = true
+  tags                        = merge(var.project-tags, { Name = "${var.resource-name-tag}-EC2" }, )
 
   root_block_device {
     volume_size           = 120

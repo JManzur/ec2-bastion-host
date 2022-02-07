@@ -39,10 +39,10 @@ variable "resource-name-tag" {
 
 variable "vpc-id" {
   type    = string
-  default = "vpc-0955d0959d69fd94e"
+  default = "vpc-0c465b527e0907992"
 }
 
 variable "public-subnet-id" {
   type    = string
-  default = "subnet-0a1a66d630bdf1786"
+  default = "subnet-0fb90b4f5778158d2"
 }
