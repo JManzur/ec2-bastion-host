@@ -5,7 +5,7 @@ data "external" "my_public_ip" {
 
 resource "aws_security_group" "bastion_host" {
   name        = "bastion_host"
-  description = "SSH and Jenkins Ports"
+  description = "SSH From ${data.external.my_public_ip.result["username"]} Public IP"
   vpc_id      = var.vpc-id
 
   ingress {
