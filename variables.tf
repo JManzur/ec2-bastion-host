@@ -15,12 +15,6 @@ variable "instance_type" {
   }
 }
 
-# SSH Key-Pair 
-variable "key_name" {
-  type    = string
-  default = "Bastion-Key"
-}
-
 /* Tags Variables */
 # Use: tags  = merge(var.project-tags, { Name = "${var.resource-name-tag}-XYZ" }, )
 variable "project-tags" {
@@ -37,12 +31,18 @@ variable "resource-name-tag" {
   default = "Bastion"
 }
 
+/* Variables from .tfvars */
 variable "vpc-id" {
   type    = string
-  default = "vpc-0c465b527e0907992"
+  default = ""
 }
 
 variable "public-subnet-id" {
   type    = string
-  default = "subnet-0fb90b4f5778158d2"
+  default = ""
+}
+
+variable "key_name" {
+  type    = string
+  default = ""
 }

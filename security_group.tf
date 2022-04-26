@@ -16,6 +16,14 @@ resource "aws_security_group" "bastion_host" {
     cidr_blocks = [data.external.my_public_ip.result["my_public_ip"]]
   }
 
+  ingress {
+    description = "Allow PING"
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 8
+    to_port     = 0
+    protocol    = "icmp"
+  }
+
   egress {
     description      = "Allow Internet Out"
     from_port        = 0

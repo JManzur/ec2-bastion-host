@@ -17,10 +17,17 @@ resource "aws_instance" "bastion-host" {
   key_name                    = var.key_name
   vpc_security_group_ids      = [aws_security_group.bastion_host.id]
   associate_public_ip_address = true
+
+  user_data = <<EOF
+  #!/bin/bash
+  yum update -y
+  yum install telnet -y
+  EOF
+
   tags                        = merge(var.project-tags, { Name = "${var.resource-name-tag}-EC2" }, )
 
   root_block_device {
-    volume_size           = 120
+    volume_size           = 8
     volume_type           = "gp2"
     delete_on_termination = true
     tags                  = merge(var.project-tags, { Name = "${var.resource-name-tag}-EBS" }, )
